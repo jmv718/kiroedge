@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | KiroEdge Guide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container" style="max-width: 1000px; padding: 4rem 5%;">
+        
+        <div style="text-align: center; margin-bottom: 4rem;">
+            <h1 style="font-size: clamp(2.5rem, 5vw, 3.5rem); margin-bottom: 1rem;">Get in Touch</h1>
+            <p style="font-size: 1.2rem; color: var(--text-muted); max-width: 600px; margin: 0 auto;">Having trouble with an installation? Got a tutorial request? We're here to help.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 4rem;">
+            
+            <div style="background: var(--card-bg); padding: 2.5rem; border-radius: 12px; border: 1px solid var(--border); box-shadow: var(--shadow-sm);">
+                <form class="contact-form" action="#" method="POST">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" class="form-control" placeholder="John Doe" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" class="form-control" placeholder="john@example.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <select id="subject" class="form-control">
+                            <option>I need help with an installation</option>
+                            <option>I found a broken link/error</option>
+                            <option>Business/Partnership inquiry</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" class="form-control" rows="5" placeholder="How can we help you?" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn-primary" style="margin-top: 1rem; width: 100%;">Send Message</button>
+                </form>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 2rem;">
+                <div>
+                    <h3 style="margin-bottom: 0.5rem;">Direct Email</h3>
+                    <p style="color: var(--text-muted);">Prefer not to use forms? Email us directly and we'll get back to you within 24-48 hours.</p>
+                    <a href="mailto:support@kiroedge.xyz" style="font-weight: 600; font-size: 1.1rem; display: inline-block; margin-top: 0.5rem;">jirachigaming07@gmail.com</a>
+                </div>
+
+                <hr style="border: none; border-top: 1px solid var(--border); width: 100%;">
+
+                <div>
+                    <h3 style="margin-bottom: 0.5rem;">Social Support</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 1rem;">Message us on our social platforms for quicker responses on common issues.</p>
+                    <div style="display: flex; gap: 1rem; flex-direction: column;">
+                        <a href="https://twitter.com/yourhandle" style="display: flex; align-items: center; gap: 10px; color: var(--text-main); font-weight: 500;">
+                            <span style="font-size: 1.5rem;">𝕏</span> @KiroEdgeSupport
+                        </a>
+                        <a href="https://youtube.com/@jirachigaming?si=Ky1QqIXQyq_hv-Rh" style="display: flex; align-items: center; gap: 10px; color: var(--text-main); font-weight: 500;">
+                            <span style="font-size: 1.5rem; color: #FF0000;">▶</span> KiroEdge YouTube
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
