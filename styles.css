@@ -122,11 +122,62 @@ header {
 
 .content { flex: 1; min-width: 0; }
 
-/* --- Hero Section & Primary Button UX --- */
-.hero { text-align: center; padding: 4rem 0 5rem; }
-.hero h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 800; margin-bottom: 1.2rem; }
-.hero p { font-size: clamp(1.1rem, 2vw, 1.25rem); color: var(--text-muted); margin-bottom: 2.5rem; max-width: 650px; margin-inline: auto; }
+/* --- NEW: Full-Width Centered Hero Section --- */
+.hero-full {
+    width: 100%;
+    background: var(--card-bg);
+    border-bottom: 1px solid var(--border);
+    padding: 5rem 5%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.hero-content {
+    max-width: 800px; /* Constrains the text so it looks perfect */
+}
+.hero-full h1 { 
+    font-size: clamp(2.2rem, 5vw, 3.8rem); 
+    font-weight: 800; 
+    margin-bottom: 1.2rem; 
+    line-height: 1.2;
+}
+.hero-full p { 
+    font-size: clamp(1.1rem, 2vw, 1.25rem); 
+    color: var(--text-muted); 
+    margin-bottom: 2.5rem; 
+}
 
+/* --- Layout: Main Container & Left Sidebar --- */
+.container {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 5%;
+    gap: 4rem;
+    align-items: flex-start; /* Ensures sidebar stays pinned to the top */
+}
+
+/* Sticky Left Table of Contents */
+.toc {
+    flex: 0 0 260px; /* Fixed width on the left */
+    position: sticky;
+    top: 90px; 
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+}
+
+.content { 
+    flex: 1; /* Takes up the remaining space on the right */
+    min-width: 0; 
+}
 /* UX UPGRADE: Primary Action Button */
 .btn-primary {
     background: var(--accent);
@@ -331,3 +382,113 @@ details[open] summary::after { transform: rotate(45deg); }
         gap: 1rem;
     }
 }
+
+/* =========================================
+   PUBLIC ANALYTICS BADGE (LIVE VIEWERS)
+   ========================================= */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.stats-badge {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    box-shadow: var(--shadow-sm);
+    white-space: nowrap;
+}
+
+.live-indicator {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #10b981; /* Emerald Green */
+    font-weight: 600;
+}
+
+/* The Pulsing Green Dot */
+.pulse {
+    width: 8px;
+    height: 8px;
+    background-color: #10b981;
+    border-radius: 50%;
+    animation: pulse-animation 2s infinite;
+}
+
+@keyframes pulse-animation {
+    0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+    70% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+.view-indicator {
+    color: var(--text-muted);
+    font-weight: 600;
+    border-left: 1px solid var(--border);
+    padding-left: 12px;
+}
+
+@media (max-width: 850px) {
+    .header-right { flex-direction: column-reverse; gap: 1rem; width: 100%; align-items: center; }
+}
+
+/* =========================================
+   MOBILE HAMBURGER MENU UX
+   ========================================= */
+.mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-main);
+    cursor: pointer;
+    padding: 5px;
+}
+
+@media (max-width: 850px) {
+    .header-left { 
+        width: 100%; 
+        display: flex; 
+        justify-content: space-between; 
+        align-items: center; 
+    }
+    .mobile-menu-toggle { display: block; }
+    
+    /* Hide nav by default on mobile */
+    .main-nav {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        background: var(--card-bg);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        padding: 1.5rem 5%;
+        border-bottom: 1px solid var(--border);
+        box-shadow: var(--shadow-md);
+    }
+    
+    /* Class added by JavaScript to show the menu */
+    .main-nav.active { display: flex; }
+}
+/* --- Contact Form Styling --- */
+.contact-form { display: flex; flex-direction: column; gap: 1.25rem; }
+.form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+.form-group label { font-weight: 600; font-size: 0.95rem; }
+.form-control {
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--bg-color);
+    color: var(--text-main);
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.form-control:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(6, 150, 215, 0.2); }
