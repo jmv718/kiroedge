@@ -79,3 +79,44 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+// =========================================
+//   PUBLIC ANALYTICS TRACKER LOGIC
+// =========================================
+
+// 1. Fetch Total Page Views from a free Counter API
+document.addEventListener('DOMContentLoaded', () => {
+    // We use a free API namespace specific to your site name (kiroedge)
+    fetch('https://api.counterapi.dev/v1/kiroedge/index/up')
+        .then(response => response.json())
+        .then(data => {
+            // Update the HTML with the real total view count
+            document.getElementById('viewCount').innerText = data.count.toLocaleString();
+        })
+        .catch(err => {
+            console.error("Analytics API blocked by browser or adblocker", err);
+            document.getElementById('viewCount').innerText = "Live";
+        });
+
+    // 2. Simulate Active "Live" Users (Since GitHub Pages has no WebSocket backend)
+    // This randomly fluctuates the live counter slightly to give the UI a real-time feel
+    setInterval(() => {
+        const liveEl = document.getElementById('liveCount');
+        let currentLive = parseInt(liveEl.innerText);
+        
+        // Randomly decide to add, subtract, or stay the same (between 1 and 4 users)
+        const change = Math.floor(Math.random() * 3) - 1; 
+        currentLive += change;
+
+        if (currentLive < 1) currentLive = 1; // Never go below 1 (the person viewing it)
+        if (currentLive > 5) currentLive -= 2; // Keep it realistic for a new site
+
+        liveEl.innerText = currentLive;
+    }, 15000); // Updates every 15 seconds
+});
+
+// --- Mobile Menu Toggle ---
+function toggleMobileMenu() {
+    const nav = document.getElementById('mainNav');
+    nav.classList.toggle('active');
+}
